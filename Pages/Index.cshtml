@@ -1,0 +1,136 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@section scripts{
+    <script src="~/js/App/Productos.js"></script>
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome HERDEZ app test 2021-12-22</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a> by Raúl Daniel Peña Silva.</p>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Busca Producto por Clave</h5>
+        <br />
+        <div class="row">
+            <div class="col-sm-12 text-left">
+                <form id="frmBuscaProducto">
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="txbBuscarProd">Buscar Producto</label>
+                            <input type="text" class="form-control w-100" id="txbBuscarProd" name="txbBuscarProd" />
+                        </div>
+                        <div class="form-group col-md-4" style="padding-top:30px ">
+                            <button type="submit" class="btn btn-primary" id="btnBuscarProd">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Busca Producto sin Precio</h5>
+        <br />
+        <div class="row">
+            <div class="col-sm-12 text-left">
+                <form id="frmBuscaProductos">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnBuscarProdLeft">Buscar por Left</button>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnBuscarProdRigth">Buscar por Right</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal producto-->
+<div class="modal fade" id="ModalProducto" tabindex="-1" aria-modal="true" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="claveProducto" class="col-sm-2 col-form-label">Clave Producto</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="claveProducto" value="email@example.com">
+                            </div>
+                            <label for="nombreProducto" class="col-sm-2 col-form-label">Nombre Producto</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="nombreProducto" value="email@example.com">
+                            </div>
+                            <label for="distancia" class="col-sm-2 col-form-label">Distancia</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="distancia" value="email@example.com">
+                            </div>
+                            <label for="precioPesos" class="col-sm-2 col-form-label">Precio Pesos</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="precioPesos" value="email@example.com">
+                            </div>
+                            <label for="iva" class="col-sm-2 col-form-label">IVA</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="iva" value="email@example.com">
+                            </div>
+                            <label for="totalEnvioDolares" class="col-sm-2 col-form-label">Total Envío Dolares</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="totalEnvioDolares" value="email@example.com">
+                            </div>
+                            <label for="totalEnvioEuros" class="col-sm-2 col-form-label">Total Envío Euros</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="totalEnvioEuros" value="email@example.com">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal producto-->
+<div class="modal fade" id="ModalProductos" tabindex="-1" aria-modal="true" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Productos sin precios</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dataTable table-responsive">
+                            <!---->
+                            <table class="table  table-responsive table-hover table-condensed" id="tblProdcutos" cellspacing="0" style="width:100%"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
